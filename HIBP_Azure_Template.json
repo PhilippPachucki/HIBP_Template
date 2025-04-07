@@ -121,23 +121,24 @@
                 "path": "/entities/account"
               }
             },
-            "Alert_-_Get_incident": {
-              "runAfter": {
-                "Query_Return": [
-                  "Succeeded"
-                ]
-              },
-              "type": "ApiConnection",
-              "inputs": {
-                "host": {
-                  "connection": {
-                    "name": "@parameters('$connections')['azuresentinel_1']['connectionId']"
-                  }
-                },
-                "method": "get",
-                "path": "/Cases/@{encodeURIComponent(triggerBody()?['SystemAlertId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceSubscriptionId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceResourceGroup'])}"
-              }
-            },
+           "Alert_-_Get_incident": {
+    "runAfter": {
+        "Query_Return": [
+            "Succeeded"
+        ]
+    },
+    "type": "ApiConnection",
+    "inputs": {
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['azuresentinel_1']['connectionId']"
+            }
+        },
+        "method": "get",
+        "path": "/Cases/@{encodeURIComponent(triggerBody()?['SystemAlertId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceSubscriptionId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceResourceGroup'])}",
+        "headers": {}
+    }
+},
             "Asterisk_Variable": {
               "runAfter": {
                 "API_Variable": [
